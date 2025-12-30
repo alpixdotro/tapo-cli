@@ -11,12 +11,21 @@ To begin using Tapo-CLI, follow these steps:
 
 ```
 git clone https://github.com/dimme/tapo-cli.git
-cd tapo-cli
-pip3 install -r requirements.txt
+
+sudo apt update
+sudo apt install -y python3-full python3-venv
+
+cd ~/TapoCamera/tapo-cli
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 chmod +x tapo-cli.py
-./tapo-cli.py login
-./tapo-cli.py list-videos
-./tapo-cli.py download-videos
+
+python tapo-cli.py login
+python tapo-cli.py list-videos --start 2025-12-01 --end 2025-12-15
+python tapo-cli.py download-videos --start 2025-12-01 --end 2025-12-15 --path ~/TapoCamera/videos --overwrite 0
+python tapo-cli.py list-devices
+python tapo-cli.py list-videos --start 2025-12-29 --end 2025-12-29
 ```
 
 For additional information and options, please refer to `./tapo-cli.py --help` and `./tapo-cli.py [COMMAND] --help`.
